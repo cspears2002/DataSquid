@@ -2,7 +2,9 @@ DataSquid::Application.routes.draw do
 
   resources :authentications
 
-  resources :users
+  resources :users do
+    resources :graphs
+  end
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

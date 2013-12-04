@@ -9,7 +9,7 @@ feature "signing in" do
     visit '/authentications/new'
     
     fill_in 'Login', :with => 'user@example.com'
-    fill_in 'Password', :with => 'password'
+    fill_in 'Password', :with => 'caplin'
 
     click_button 'Sign in'
     expect(page).to have_content 'Success'
@@ -17,6 +17,14 @@ feature "signing in" do
 
   # User doesn't exist in db.
   it "creates a new user" do
+    visit '/authentications/new'
+
+    fill_in 'Login', :with => 'foo@example.com'
+    fill_in 'Password', :with => 'foobar'
+
+    click_button 'Sign in'
+    
+    visit '/users/new'
   end
 
   # User exists in db but the wrong password is given.
