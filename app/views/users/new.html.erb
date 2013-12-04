@@ -1,1 +1,7 @@
-<h1>Created <%= @user.name %></h1>
+<%= form_for @user do |u| %>
+  <%= u.text_field :name, placeholder: 'Login'%>
+  <%= u.text_field :password, placeholder: 'Password'%>
+  <%= u.text_field :password_confirmation, placeholder: 'Confirm Password'%>
+
+  <%= u.submit "Sign in" %>
+<% end %>

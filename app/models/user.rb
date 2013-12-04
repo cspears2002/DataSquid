@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
 
   before_save :hash_password
 
-  attr_accessor :password
+  attr_accessor :password, :password_confirmation
 
   def authenticate(password)
     # Is the salted password the same as the hashed password?
