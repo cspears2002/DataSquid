@@ -1,1 +1,3 @@
-<h1>Authentications new</h1>
+<%= form_for @user do |u| %>
+  <%= u.text_field :name, placeholder: 'Login'%>
+<% end %>
