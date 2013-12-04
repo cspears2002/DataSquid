@@ -5,18 +5,28 @@ feature "signing in" do
     User.create(:name => 'user@example.com', :password => 'caplin')
   end
 
-  scenario "logs in with correct credentials" do
+  scenario "user logs in with correct credentials" do
     visit '/authentications/new'
     
     fill_in 'Login', :with => 'user@example.com'
     fill_in 'Password', :with => 'caplin'
 
     click_button 'Sign in'
-    expect(page).to have_content 'Success'
+    expect(page).to have_content 'Hi user@example.com'
   end
 
-  # User doesn't exist in db.
-  it "creates a new user" do
+  scenario "user exists in db but the wrong password is given" do
+    visit '/authentications/new'
+
+    fill_in 'Login', :with => 'user@example.com'
+    fill_in 'Password', :with => 'wrong'
+
+    click_button 'Sign in'
+    expect(page).to have_content 'Wrong username/password!'
+  end
+
+  scenario "user doesn't exist in db" do
+    # Makes a new user
     visit '/authentications/new'
 
     fill_in 'Login', :with => 'foo@example.com'
@@ -26,11 +36,6 @@ feature "signing in" do
     
     visit '/users/new'
   end
-
-  # User exists in db but the wrong password is given.
-  it "will not let me log in" do
-  end
-
 end
 
 feature "signing out" do

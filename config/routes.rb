@@ -1,5 +1,7 @@
 DataSquid::Application.routes.draw do
 
+  root 'authentications#new'
+
   resources :authentications
 
   resources :users do
