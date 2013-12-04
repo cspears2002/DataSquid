@@ -3,6 +3,7 @@ class AuthenticationsController < ApplicationController
 
   def new
     @user = User.new(name: params[:name])
+    render :new
   end
 
 end

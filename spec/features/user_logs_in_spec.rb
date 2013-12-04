@@ -11,7 +11,7 @@ feature "signing in" do
     fill_in 'Login', :with => 'user@example.com'
     fill_in 'Password', :with => 'password'
 
-    click_link 'Sign in'
+    click_button 'Sign in'
     expect(page).to have_content 'Success'
   end
 
@@ -25,5 +25,5 @@ feature "signing in" do
 
 end
 
-describe "the signout process", :type => :feature do
+feature "signing out" do
 end

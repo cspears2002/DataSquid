@@ -1,3 +1,6 @@
 <%= form_for @user do |u| %>
   <%= u.text_field :name, placeholder: 'Login'%>
+  <%= u.text_field :password, placeholder: 'Password'%>
+
+  <%= u.submit "Sign in" %>
 <% end %>
