@@ -37,7 +37,7 @@ end
 
 feature "signing out" do
   before :each do
-    user = User.create(:name => 'user@example.com', :password => 'caplin')
+    User.create(:name => 'user@example.com', :password => 'caplin')
   end
 
   scenario "logged in user" do
