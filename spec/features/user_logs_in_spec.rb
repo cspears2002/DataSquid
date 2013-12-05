@@ -23,10 +23,7 @@ feature "signing in" do
   end
 
   scenario "user who doesn't exist in db" do
-    visit '/authentications/new'
-    fill_in 'Login', :with => 'foo@example.com'
-    fill_in 'Password', :with => 'foobar'
-    click_button 'Sign in'
+    sign_in(user = User.create(:name => 'foo@example.com', :password => 'foobar'))
 
     visit '/users/new'
     fill_in 'Login', :with => 'foo@example.com'
