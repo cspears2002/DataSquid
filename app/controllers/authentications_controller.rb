@@ -16,8 +16,8 @@ class AuthenticationsController < ApplicationController
         redirect_to user
       else
         # Doesn't work so try again
-        redirect_to root_url
         flash[:alert] = "Wrong username/password!"
+        redirect_to root_url
       end
     else
       # Make a new user
