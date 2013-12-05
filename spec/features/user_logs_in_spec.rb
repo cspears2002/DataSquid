@@ -15,7 +15,10 @@ feature "signing in" do
   end
 
   scenario "user who exists in db but the wrong password is given" do
-    sign_in
+    visit '/authentications/new'
+    fill_in 'Login', with: @user.name
+    fill_in 'Password', with: 'wrong'
+    click_button 'Sign in'
     expect(page).to have_content 'Wrong username/password!'
   end
 
@@ -37,12 +40,12 @@ end
 
 feature "signing out" do
   before :each do
-    User.create(:name => 'user@example.com', :password => 'caplin')
+    @user = User.create(:name => 'user@example.com', :password => 'caplin')
   end
 
   scenario "logged in user" do
     # User logs in
-    sign_in
+    sign_in(@user)
     expect(page).to have_content 'Hi user@example.com'
 
     # And then logs out
