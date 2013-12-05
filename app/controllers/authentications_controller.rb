@@ -1,8 +1,12 @@
 class AuthenticationsController < ApplicationController
 
   def new
-    @user = User.new(name: params[:name])
-    render :new
+    if current_user
+      redirect_to users_url
+    else
+      @user = User.new(name: params[:name])
+      render :new
+    end
   end
 
   def create
