@@ -3,10 +3,6 @@ require 'spec_helper'
 feature "signing in" do
   before :each do
     @user = User.create(:name => 'user@example.com', :password => 'caplin')
-
-    # for controllers
-    # user = User.create(:name => 'user@example.com', :password => 'caplin')
-    # ApplicationController.stub(:current_user).and_return(user)
   end
 
   scenario "user who logs in with correct credentials" do
