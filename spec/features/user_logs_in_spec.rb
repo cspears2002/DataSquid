@@ -2,7 +2,7 @@ require 'spec_helper'
 
 feature "signing in" do
   before :each do
-    User.create(:name => 'user@example.com', :password => 'caplin')
+    @user = User.create(:name => 'user@example.com', :password => 'caplin')
 
     # for controllers
     # user = User.create(:name => 'user@example.com', :password => 'caplin')
@@ -10,7 +10,7 @@ feature "signing in" do
   end
 
   scenario "user who logs in with correct credentials" do
-    sign_in
+    sign_in(@user)
     expect(page).to have_content 'Hi user@example.com'
   end
 

@@ -1,7 +1,7 @@
 module Features
   module SessionHelpers
-    def sign_in
-      user = create(:user)
+    def sign_in(user=nil)
+      user ||= FactoryGirl.create(:user)
       visit '/authentications/new'
       fill_in 'Login', with: user.name
       fill_in 'Password', with:  user.password
