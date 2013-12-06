@@ -1,0 +1,31 @@
+{
+  "nodes":[
+    {"name":"Daniel", "group":1},
+    {"name":"Nick", "group":1},
+    {"name":"Sylvia", "group":1},
+    {"name":"Meredith", "group":2},
+    {"name":"Kevin", "group":2},
+    {"name":"Edwin", "group":2},
+    {"name":"Tim", "group":3}
+  ],
+  "links":[
+    {"source":0, "target":1, "value":1},
+    {"source":0, "target":2,"value":1},
+    {"source":1,"target":0,"value":1},
+    {"source":1,"target":2,"value":1},
+    {"source":2,"target":0,"value":1},
+    {"source":2,"target":1,"value":1},
+    {"source":3,"target":4,"value":1},
+    {"source":3,"target":5,"value":1},
+    {"source":4,"target":3,"value":1},
+    {"source":4,"target":5,"value":1},
+    {"source":5,"target":3,"value":1},
+    {"source":5,"target":4,"value":1},
+    {"source":6,"target":0,"value":1},
+    {"source":6,"target":1,"value":1},
+    {"source":6,"target":2,"value":1},
+    {"source":6,"target":3,"value":1},
+    {"source":6,"target":4,"value":1},
+    {"source":6,"target":5,"value":1}
+  ]
+}
