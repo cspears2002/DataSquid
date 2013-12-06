@@ -1,13 +1,13 @@
 require 'spec_helper'
 
-feature "creating graph" do
+describe "creating graph", :js => true do
   before :each do
     @user = User.create(:name => 'user@example.com', :password => 'caplin')
   end
 
   file_path = '/Users/christopherspears/wdi/DataSquid/'
 
-  scenario "with a graph name and properly formatted JSON" do
+  it "creates a graph with a graph name and properly formatted JSON" do
     sign_in(@user)
     visit '/users/:user_id/graphs/new'
 
@@ -17,19 +17,19 @@ feature "creating graph" do
     expect(page).to have_content 'Created ' + @graph.name
   end
 
-  scenario "with a graph name and a file with the wrong extension" do
+  it "tries to create a graph with a graph name and a file with the wrong extension" do
   end
 
-  scenario "with a graph name and a blank JSON" do
+  it "tries to create a graph with a graph name and a blank JSON" do
   end
 
-  scenario "with a graph name and a improperly formatted JSON" do
+  it "tries to create a graph with a graph name and a improperly formatted JSON" do
   end
 
-  scenario "with no graph name and properly formatted JSON" do
+  it "tries to create a graph with no graph name and properly formatted JSON" do
   end
 
-  scenario "with a graph name and no file" do
+  it "tries to create a graph with a graph name and no file" do
   end
 
 end
