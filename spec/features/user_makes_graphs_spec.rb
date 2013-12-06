@@ -12,8 +12,9 @@ feature "creating graph" do
     visit '/users/:user_id/graphs/new'
 
     fill_in 'Graph Name', with: 'Test'
-    attach_file('Data', file_path + 'sample.json')
+    attach_file 'Data', file_path + 'sample.json'
     click_button('Create Graph')
+    expect(page).to have_content 'Created ' + @graph.name
   end
 
   scenario "with a graph name and a file with the wrong extension" do
