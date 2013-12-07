@@ -11,17 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131206011232) do
+ActiveRecord::Schema.define(version: 20131207012813) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "graphs", force: true do |t|
     t.string   "name"
-    t.string   "data"
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "data"
   end
 
   add_index "graphs", ["user_id"], name: "index_graphs_on_user_id", using: :btree

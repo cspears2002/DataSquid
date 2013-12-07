@@ -16,9 +16,9 @@ describe "creating graph", :js => true do
 
     fill_in 'Graph Name', with: 'Test'
     file_path = '/Users/christopherspears/wdi/DataSquid/'
-    attach_file 'Data', file_path + 'sample.json'
+    fill_in 'Data', with: file_path + 'sample.json'
     click_button('Create Graph')
-    expect(page).to have_content 'Created ' + @graph.name
+    expect(page).to have_content 'Created'
   end
 
   it "tries to create a graph with a graph name and a file with the wrong extension" do
