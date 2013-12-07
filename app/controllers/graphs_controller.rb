@@ -10,6 +10,10 @@ class GraphsController < ApplicationController
     @graph = current_user.graphs.create( graph_params )
     redirect_to :action => "show", :id => @graph.id, :user_id => current_user
   end
+
+  def show
+    @graph = Graph.find(params[:id])
+  end
   
   private
 
