@@ -5,13 +5,17 @@ describe "creating graph", :js => true do
     @user = User.create(:name => 'user@example.com', :password => 'caplin')
   end
 
-  file_path = '/Users/christopherspears/wdi/DataSquid/'
-
   it "creates a graph with a graph name and properly formatted JSON" do
     sign_in(@user)
-    visit '/users/:user_id/graphs/new'
+
+    # important paths
+    new_graphs_array = ['/users', @user.id, 'graphs', 'new']
+    new_graphs_route = new_graphs_array.join('/')
+
+    visit new_graphs_route
 
     fill_in 'Graph Name', with: 'Test'
+    file_path = '/Users/christopherspears/wdi/DataSquid/'
     attach_file 'Data', file_path + 'sample.json'
     click_button('Create Graph')
     expect(page).to have_content 'Created ' + @graph.name

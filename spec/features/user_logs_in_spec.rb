@@ -1,16 +1,16 @@
 require 'spec_helper'
 
-feature "signing in" do
+describe "signing in", :js => true do
   before :each do
     @user = User.create(:name => 'user@example.com', :password => 'caplin')
   end
 
-  scenario "user who logs in with correct credentials" do
+  it "allows a user to log in with correct credentials" do
     sign_in(@user)
     expect(page).to have_content 'Hi user@example.com'
   end
 
-  scenario "user who exists in db but the wrong password is given" do
+  it "handles a user who exists in db but gives the wrong password" do
     visit '/authentications/new'
     fill_in 'Login', with: @user.name
     fill_in 'Password', with: 'wrong'
@@ -18,7 +18,7 @@ feature "signing in" do
     expect(page).to have_content 'Wrong username/password!'
   end
 
-  scenario "user who doesn't exist in db" do
+  it "handles a user who doesn't exist in db" do
     sign_in(user = User.create(:name => 'foo@example.com', :password => 'foobar'))
 
     visit '/users/new'
@@ -31,12 +31,12 @@ feature "signing in" do
   end
 end
 
-feature "signing out" do
+describe "signing out", :js => true do
   before :each do
     @user = User.create(:name => 'user@example.com', :password => 'caplin')
   end
 
-  scenario "logged in user" do
+  it "logs out a user" do
     # User logs in
     sign_in(@user)
     expect(page).to have_content 'Hi user@example.com'
