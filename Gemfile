@@ -45,6 +45,12 @@ end
 # Use ActiveModel has_secure_password
 gem 'bcrypt-ruby', '~> 3.0.0'
 
+# For Heroku
+gem 'rails_12factor', group: :production
+
+# To parse JSON
+gem 'json'
+
 # Use unicorn as the app server
 # gem 'unicorn'
 
