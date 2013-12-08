@@ -8,6 +8,7 @@ class GraphsController < ApplicationController
 
   def create
     @graph = current_user.graphs.create( graph_params )
+    @graph.parse_file
     redirect_to :action => "show", :id => @graph.id, :user_id => current_user
   end
 
