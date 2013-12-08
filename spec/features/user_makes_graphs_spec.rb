@@ -21,15 +21,6 @@ describe "creating graph", :js => true do
     expect(page).to have_content 'Created'
   end
 
-  it "tries to create a graph with a graph name and a file with the wrong extension" do
-  end
-
-  it "tries to create a graph with a graph name and a blank JSON" do
-  end
-
-  it "tries to create a graph with a graph name and a improperly formatted JSON" do
-  end
-
   it "tries to create a graph with no graph name and properly formatted JSON" do
   end
 

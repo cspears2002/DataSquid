@@ -1,5 +1,6 @@
 module Features
   module SessionHelpers
+
     def sign_in(user=nil)
       user ||= FactoryGirl.create(:user)
       visit '/authentications/new'
@@ -7,5 +8,6 @@ module Features
       fill_in 'Password', with:  user.password
       click_button 'Sign in'
     end
+    
   end
 end
