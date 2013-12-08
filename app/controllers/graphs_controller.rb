@@ -1,5 +1,8 @@
 class GraphsController < ApplicationController
 
+  def index
+  end
+
   def new
     @graph = Graph.new
     @user = User.find(params[:user_id])
@@ -17,6 +20,7 @@ class GraphsController < ApplicationController
       redirect_to :action => "show", :id => @graph.id, :user_id => current_user
     else
       flash[:alert] = "JSON is invalid."
+      redirect_to user_graphs_url
     end
   end
 

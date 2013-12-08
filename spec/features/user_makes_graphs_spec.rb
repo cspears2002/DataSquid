@@ -21,7 +21,7 @@ describe "creating graph", :js => true do
     expect(page).to have_content 'Created'
   end
 
-  it " does not create a grpah with improperly formatted JSON" do
+  it "does not create a graph with a file that does not exist" do
     sign_in(@user)
 
     # important paths
@@ -36,5 +36,12 @@ describe "creating graph", :js => true do
     click_button('Create Graph')
     expect(page).to have_content 'JSON is invalid.'
   end
+
+  it "should require a file with a json extension" do
+  end
+
+  it "should not create a graph with a blank JSON file" do
+  end
+
 
 end
