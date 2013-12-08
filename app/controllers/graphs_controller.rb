@@ -7,8 +7,9 @@ class GraphsController < ApplicationController
   end
 
   def create
-    @graph = current_user.graphs.create( graph_params )
-    @graph.parse_file
+    @graph = current_user.graphs.new( graph_params )
+    @graph.parse_file()
+    @graph.save
     redirect_to :action => "show", :id => @graph.id, :user_id => current_user
   end
 
@@ -19,7 +20,7 @@ class GraphsController < ApplicationController
   private
 
   def graph_params
-    params.require(:graph).permit(:name, :data)
+    params.require(:graph).permit(:name, :data, :graph_json)
   end
 
 end

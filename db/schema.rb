@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131207012813) do
+ActiveRecord::Schema.define(version: 20131208211702) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(version: 20131207012813) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "data"
+    t.json     "graph_json"
   end
 
   add_index "graphs", ["user_id"], name: "index_graphs_on_user_id", using: :btree

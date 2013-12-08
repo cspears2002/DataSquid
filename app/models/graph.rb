@@ -14,7 +14,7 @@ class Graph < ActiveRecord::Base
           file = open(path)
           json = file.read
           parsed = JSON.parse(json)
-          puts parse
+          parsed
     end
   end
   
