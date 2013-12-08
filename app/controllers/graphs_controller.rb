@@ -11,9 +11,13 @@ class GraphsController < ApplicationController
 
     # Parse the json file and store the json to Postgresql
     @graph.graph_json = @graph.parse_file(@graph.data)
-    
-    @graph.save
-    redirect_to :action => "show", :id => @graph.id, :user_id => current_user
+
+    if @graph.graph_json
+      @graph.save
+      redirect_to :action => "show", :id => @graph.id, :user_id => current_user
+    else
+      flash[:alert] = "JSON is invalid."
+    end
   end
 
   def show
