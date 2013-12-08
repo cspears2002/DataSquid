@@ -8,7 +8,10 @@ class GraphsController < ApplicationController
 
   def create
     @graph = current_user.graphs.new( graph_params )
-    @graph.parse_file()
+
+    # Parse the json file and store the json to Postgresql
+    @graph.graph_json = @graph.parse_file(@graph.data)
+    
     @graph.save
     redirect_to :action => "show", :id => @graph.id, :user_id => current_user
   end
