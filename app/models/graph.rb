@@ -7,12 +7,17 @@ class Graph < ActiveRecord::Base
   validates :data, presence: true
 
   def parse_file(path)
-    # check to see if the json file exists and is not empty
+    # Check to see if the json file exists and is not empty
     if File.exist?(path) &&
        File.extname(path) == ".json" &&
        !File.zero?(path)
-          file = open(path)
+
+          # Open, read, and close file
+          file = File.open(path, 'r')
           json = file.read
+          file.close
+
+          # Parse the json
           parsed = JSON.parse(json)
           parsed
     end

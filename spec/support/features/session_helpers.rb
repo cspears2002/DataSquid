@@ -27,7 +27,7 @@ module Features
 
       fill_in 'Graph Name', with: graph_name
       
-      fill_in 'Data', with: file_path
+      fill_in 'File Path', with: file_path
       click_button('Create Graph')
       expect(page).to have_content msg
     end
