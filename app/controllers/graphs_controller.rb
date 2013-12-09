@@ -6,7 +6,7 @@ class GraphsController < ApplicationController
   def new
     @graph = Graph.new
     @user = User.find(params[:user_id])
-    render :new
+    render :new, layout: false
   end
 
   def create

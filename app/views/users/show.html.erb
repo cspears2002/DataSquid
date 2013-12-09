@@ -1,3 +1,11 @@
 <h1> Hi <%= @user.name %> </h1>
 
+<!-- Pass user to Javascript -->
+<%= content_tag :div, class: "user_info", data: {user_id: @user.id} do %>
+<% end %>
+
+<p id="create_new_graph">
+  <!-- Placeholder for graphs#new -->
+</p>
+
 <%= button_to "Sign out", authentication_path(@user.id), method: :delete %>

@@ -1,6 +1,6 @@
 <%= form_for [@user, @graph], {url:"/users/:user_id/graphs"} do |form| %>
   <%= form.text_field :name, placeholder: 'Graph Name'%>
-  <%= form.text_field :data, placeholder: 'Data'%>
+  <%= form.text_field :data, placeholder: 'File Path'%>
 
   <%= form.submit "Create Graph" %>
 <% end %>
