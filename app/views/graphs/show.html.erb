@@ -1,6 +1,9 @@
+<!-- Pass json to Javascript -->
+<%= content_tag :div, class: "graph_json", data: {json: @graph.graph_json} do %>
+<% end %>
 
 <p id="display_graph">
-  <!-- Placeholder for graphs#new -->
+  <!-- Placeholder for force directed graph -->
 </p>
 
 Created Graph!
@@ -9,10 +12,5 @@ Created Graph!
   <%= @graph.name %>
 
   <%= @graph.data %>
-  
-  <!-- <%= @graph.graph_json %> -->
-  <!-- Pass user to Javascript -->
-<%= content_tag :div, class: "graph_json", data: {json: @graph.graph_json} do %>
-<% end %>
 
 <% end %>

@@ -22,7 +22,7 @@ $(function() {
         .attr("width", width)
         .attr("height", height);
 
-    json_from_db = $('.graph_json').data('json');
+    var json_from_db = $('.graph_json').data('json');
     d3.json(json_from_db, function(error, graph) {
       force
           .nodes(graph.nodes)
