@@ -27,8 +27,8 @@ $(function() {
 
   // Sets up the force directed graph
   var force = d3.layout.force()
-      .charge(-120)
-      .linkDistance(30)
+      .charge(-120) // user adjusts?
+      .linkDistance(100) // user adjusts?
       .size([width, height])
       .nodes(json_nodes)
       .links(json_links)
@@ -42,12 +42,14 @@ $(function() {
 
   var node = svg.selectAll(".node")
       .data(json_nodes)
-    .enter().append("circle")
+    .enter().append("g")
       .attr("class", "node")
-      .attr("r", 5)
-      .style("fill", function(d) { return color(d.group); })
       .call(force.drag);
 
+  node.append("circle")
+      .attr("r", 10) // user adjusts?
+      .style("fill", function(d) { return color(d.group); });
+      
   node.append("text")
       .attr("dx", 12)
       .attr("dy", ".35em")
@@ -58,8 +60,6 @@ $(function() {
         .attr("y1", function(d) { return d.source.y; })
         .attr("x2", function(d) { return d.target.x; })
         .attr("y2", function(d) { return d.target.y; });
-
-    node.attr("cx", function(d) { return d.x; })
-        .attr("cy", function(d) { return d.y; });
+    node.attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; });
   });
 });
