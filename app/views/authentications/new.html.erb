@@ -1,6 +1,14 @@
-<%= form_for @user, {url:"/authentications", method:"post"} do |u| %>
-  <%= u.text_field :name, placeholder: 'Login'%>
-  <%= u.text_field :password, placeholder: 'Password'%>
+<div class="container">
 
-  <%= u.submit "Sign in" %>
-<% end %>
+  <form class="form-signin" role="form">
+    <h2 class="form-signin-heading">Please sign in</h2>
+    <%= form_for @user, {url:"/authentications", method:"post"} do |u| %>
+      <%= u.text_field :name, placeholder: 'Login', class: "form-control" %>
+      <%= u.text_field :password, placeholder: 'Password', class: "form-control" %>
+      <br>
+      <%= u.submit "Sign in", class: "btn btn-lg btn-primary btn-block" %>
+    <% end %>
+
+  </form>
+
+</div> <!-- /container -->

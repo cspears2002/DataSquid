@@ -2,15 +2,15 @@
 <%= content_tag :div, class: "graph_json", data: {json: @graph.graph_json} do %>
 <% end %>
 
+<h1>
+  <%= @graph.name %>
+</h1>
+
 <div id="display_graph">
   <!-- Placeholder for force directed graph -->
 </div>
 
-Created Graph!
 
-<%= form_for [@user, @graph], {url:"/users/:user_id/graphs/:id"} do |form| %>
-  <%= @graph.name %>
-
-  <%= @graph.data %>
-
-<% end %>
+<div id="graph_control_panel">
+  <%= button_to "View All Graphs", user_graphs_path(@user.id), method: :get %>
+</div>

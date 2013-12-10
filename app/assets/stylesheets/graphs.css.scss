@@ -2,6 +2,12 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+$font-stack: Arial, sans-serif;
+
+body {
+  font-family: $font-stack;
+}
+
 .node text {
   pointer-events: none;
   font: 10px sans-serif;
@@ -11,4 +17,9 @@
 .link {
   stroke: #ccc;
   stroke-opacity: .6;
+}
+
+#display_graph, #graph_control_panel {
+  border:2px solid;
+  border-radius:25px;
 }
