@@ -49,7 +49,11 @@ end
 gem 'bcrypt-ruby', '~> 3.0.0'
 
 # For Heroku
-gem 'rails_12factor', group: :production
+group :production do
+  gem 'rails_12factor'
+  gem 'thin'
+  gem 'pg'
+end
 
 # To parse JSON
 gem 'json'
