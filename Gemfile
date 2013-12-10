@@ -51,6 +51,9 @@ gem 'rails_12factor', group: :production
 # To parse JSON
 gem 'json'
 
+# For D3
+gem "d3-rails"
+
 # Use unicorn as the app server
 # gem 'unicorn'
 

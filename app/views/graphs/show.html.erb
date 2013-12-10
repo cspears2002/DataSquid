@@ -1,3 +1,8 @@
+
+<p id="display_graph">
+  <!-- Placeholder for graphs#new -->
+</p>
+
 Created Graph!
 
 <%= form_for [@user, @graph], {url:"/users/:user_id/graphs/:id"} do |form| %>
@@ -5,6 +10,9 @@ Created Graph!
 
   <%= @graph.data %>
   
-  <%= @graph.graph_json %>
+  <!-- <%= @graph.graph_json %> -->
+  <!-- Pass user to Javascript -->
+<%= content_tag :div, class: "graph_json", data: {json: @graph.graph_json} do %>
+<% end %>
 
 <% end %>
