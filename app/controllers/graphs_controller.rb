@@ -1,6 +1,8 @@
 class GraphsController < ApplicationController
 
   def index
+    @user = User.find(params[:user_id])
+    @graphs = Graph.all
   end
 
   def new
@@ -26,6 +28,11 @@ class GraphsController < ApplicationController
 
   def show
     @graph = Graph.find(params[:id])
+  end
+
+  def destroy
+    Graph.find(params[:id]).destroy
+    redirect_to user_graphs_url
   end
   
   private

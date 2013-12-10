@@ -1,1 +1,19 @@
-<h1> Graphs Index </h1>
+<h1> Graphs Belonging to <%= @user.name %> </h1>
+
+<table>
+  <tr>
+    <th>ID</th>
+    <th>Name</th>
+    <th>Update At</th>
+  </tr>
+  <%= @graphs.each do |g| %>
+  <tr>
+    <td><%= g.id %></td>
+    <td><%= g.name %></td>
+    <td><%= g.updated_at %></td>
+    <td><%= button_to "View", user_graph_path(id: g.id), method: :get %></td>
+    <td><%= button_to "Delete", user_graph_path(@user.id, id: g.id), method: :delete %></td>
+  </tr>
+  <% end %>
+</table>
+

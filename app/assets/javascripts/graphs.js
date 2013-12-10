@@ -7,7 +7,7 @@ $(function() {
 
 // Make force directed graph
 $(function() {
-  $("#display_graph").show(function() {
+  d3.select("#display_graph").style(function() {
     var width = 960,
         height = 500;
 
