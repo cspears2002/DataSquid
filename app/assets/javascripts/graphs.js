@@ -12,6 +12,7 @@ $(function() {
   var width = 960,
       height = 500;
 
+  // Maps groups to colors
   var color = d3.scale.category20();
 
   // Select the div and append a svg
@@ -47,7 +48,9 @@ $(function() {
       .style("fill", function(d) { return color(d.group); })
       .call(force.drag);
 
-  node.append("title")
+  node.append("text")
+      .attr("dx", 12)
+      .attr("dy", ".35em")
       .text(function(d) { return d.name; });
 
   force.on("tick", function() {
