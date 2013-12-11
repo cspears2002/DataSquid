@@ -8,6 +8,8 @@ body {
   font-family: $font-stack;
 }
 
+/* Control Panel */
+
 .graph_control_panel {
   border-radius: 25px;
   font-size: 18px;
@@ -24,6 +26,16 @@ body {
   width: 65%;
   float: right;
 }
+
+#fisheye {
+  float: left;
+}
+
+#refresh {
+  float: right;
+}
+
+/* Fore Directed Graph */
 
 .node text {
   pointer-events: none;
