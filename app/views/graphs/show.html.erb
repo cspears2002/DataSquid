@@ -17,45 +17,41 @@
 
 <!-- Buttons to control graph behavior -->
 <div class="container">
-  <div class="row">
-
-    <div class="span5 graph_control_panel">
-      <div id="link_distance">
-        <label>
-          <span class="label label-primary">Link Distance</span>
-        </label>
-        <input type="number" name="link_distance">
-      </div>
-      <div id="charge">
-        <label>
-          <span class="label label-primary">Charge</span>
-        </label>
-        <input type="number" name="charge">
-      </div>
-      <div id="node_radius">
-        <label>
-          <span class="label label-primary">Node Radius</span>
-        </label>
-        <input type="number" name="node_radius">
-      </div>
-      <div id="font_size">
-        <label>
-          <span class="label label-primary">Font Size</span>
-        </label>
-        <input type="number" name="font_size">
-      </div>
-      <div id="fisheye">
-        <button type="button" class="btn btn-primary btn-lg">
-          <span class="glyphicon glyphicon-eye-open"> Fisheye</span>
-        </button>
-      </div>
+  <div id="behaviors" class="graph_control_panel">
+    <div id="link_distance">
+      <label>
+        <span class="label label-primary">Link Distance</span>
+      </label>
+      <input type="number" name="link_distance" size=4>
     </div>
-
-    <div class="span7 graph_control_panel">
-      <h3>Display Relationships</h3>
-      <button type="button" class="btn btn-primary btn-block">Nodes</button>
-      <button type="button" class="btn btn-primary btn-block">Links</button>
+    <div id="charge">
+      <label>
+        <span class="label label-primary">Charge</span>
+      </label>
+      <input type="number" name="charge" size=4>
     </div>
+    <div id="node_radius">
+      <label>
+        <span class="label label-primary">Node Radius</span>
+      </label>
+      <input type="number" name="node_radius" size=4>
+    </div>
+    <div id="font_size">
+      <label>
+        <span class="label label-primary">Font Size</span>
+      </label>
+      <input type="number" name="font_size" size=4>
+    </div>
+    <div id="fisheye">
+      <button type="button" class="btn btn-primary btn-lg">
+        <span class="glyphicon glyphicon-eye-open"> Fisheye</span>
+      </button>
+    </div>
+  </div>
 
+  <div id="relationships" class="graph_control_panel">
+    <h3>Display Relationships</h3>
+    <button type="button" class="btn btn-primary btn-block">Nodes</button>
+    <button type="button" class="btn btn-primary btn-block">Links</button>
   </div>
 </div>

@@ -1,9 +1,14 @@
 // Grab the user id from rails and load graphs#new
-$(function() {
+
+ready = function() {
   var user_id = $('.user_info').data('user-id');
   var route = ['/users', user_id, 'graphs', 'new'].join('/');
   $("#create_new_graph").load(route);
-});
+};
+
+// Force a turbolinks page load
+$(document).ready(ready);
+$(document).on('page:load', ready);
 
 // Make force directed graph
 $(function() {

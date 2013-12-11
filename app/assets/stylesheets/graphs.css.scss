@@ -15,6 +15,16 @@ body {
   background-color: #eee;
 }
 
+#behaviors {
+  width: 34%;
+  float: left;
+}
+
+#relationships {
+  width: 65%;
+  float: right;
+}
+
 .node text {
   pointer-events: none;
   font: 10px sans-serif;
