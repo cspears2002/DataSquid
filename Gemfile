@@ -12,6 +12,9 @@ gem 'sass-rails', '~> 4.0.0'
 # The latest bootstrap with SASS gem
 gem 'bootstrap-sass', github: 'thomas-mcdonald/bootstrap-sass'
 
+# For breadcrumbs
+gem 'twitter-bootstrap-rails'
+
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 

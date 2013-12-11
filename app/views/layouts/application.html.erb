@@ -7,7 +7,10 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-  
+
+<!-- Breadcrumbs -->
+<%= render_breadcrumbs %>
+
 <!-- Show flash messages -->
 <% flash.each do |name, msg| -%>
   <%= content_tag :div, msg, class: name %>

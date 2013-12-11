@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_filter :add_breadcrumbs
 
   def new
     @user = User.new(name: params[:name])
@@ -15,6 +16,12 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+  end
+
+  private
+
+  def add_breadcrumbs
+    add_breadcrumb current_user.name, user_path(current_user)
   end
 
 end

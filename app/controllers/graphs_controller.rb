@@ -1,4 +1,5 @@
 class GraphsController < ApplicationController
+  before_filter :add_breadcrumbs
 
   def index
     @user = User.find(params[:user_id])
@@ -29,6 +30,7 @@ class GraphsController < ApplicationController
   def show
     @user = User.find(params[:user_id])
     @graph = Graph.find(params[:id])
+    add_breadcrumb "Views", user_graph_path(@user.id, @graph.id)
   end
 
   def destroy
@@ -40,6 +42,11 @@ class GraphsController < ApplicationController
 
   def graph_params
     params.require(:graph).permit(:name, :data, :graph_json)
+  end
+
+  def add_breadcrumbs
+    add_breadcrumb current_user.name, user_path(current_user)
+    add_breadcrumb "Graphs", user_graphs_path(current_user)
   end
 
 end

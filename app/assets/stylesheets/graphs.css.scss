@@ -8,6 +8,13 @@ body {
   font-family: $font-stack;
 }
 
+.graph_control_panel {
+  border-radius: 25px;
+  font-size: 18px;
+  padding: 10px;
+  background-color: #eee;
+}
+
 .node text {
   pointer-events: none;
   font: 10px sans-serif;
@@ -17,9 +24,4 @@ body {
 .link {
   stroke: #ccc;
   stroke-opacity: .6;
-}
-
-#display_graph, #graph_control_panel {
-  border:2px solid;
-  border-radius:25px;
 }

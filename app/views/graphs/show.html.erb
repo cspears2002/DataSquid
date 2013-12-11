@@ -2,15 +2,60 @@
 <%= content_tag :div, class: "graph_json", data: {json: @graph.graph_json} do %>
 <% end %>
 
-<h1>
-  Created <%= @graph.name %>
-</h1>
+<div class="container">
 
-<div id="display_graph">
-  <!-- Placeholder for force directed graph -->
+  <h1>
+    Created <%= @graph.name %>
+  </h1>
+
+  <div class="jumbotron">
+    <div id="display_graph">
+      <!-- Placeholder for force directed graph -->
+    </div>
+  </div>
 </div>
 
+<!-- Buttons to control graph behavior -->
+<div class="container">
+  <div class="row">
 
-<div id="graph_control_panel">
-  <%= button_to "View All Graphs", user_graphs_path(@user.id), method: :get %>
+    <div class="span5 graph_control_panel">
+      <div id="link_distance">
+        <label>
+          <span class="label label-primary">Link Distance</span>
+        </label>
+        <input type="number" name="link_distance">
+      </div>
+      <div id="charge">
+        <label>
+          <span class="label label-primary">Charge</span>
+        </label>
+        <input type="number" name="charge">
+      </div>
+      <div id="node_radius">
+        <label>
+          <span class="label label-primary">Node Radius</span>
+        </label>
+        <input type="number" name="node_radius">
+      </div>
+      <div id="font_size">
+        <label>
+          <span class="label label-primary">Font Size</span>
+        </label>
+        <input type="number" name="font_size">
+      </div>
+      <div id="fisheye">
+        <button type="button" class="btn btn-primary btn-lg">
+          <span class="glyphicon glyphicon-eye-open"> Fisheye</span>
+        </button>
+      </div>
+    </div>
+
+    <div class="span7 graph_control_panel">
+      <h3>Display Relationships</h3>
+      <button type="button" class="btn btn-primary btn-block">Nodes</button>
+      <button type="button" class="btn btn-primary btn-block">Links</button>
+    </div>
+
+  </div>
 </div>
