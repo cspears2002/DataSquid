@@ -9,7 +9,7 @@ var ready = function() {
 $(document).ready(ready);
 $(document).on('page:load', ready);
 
-// Make force directed graph
+// Make force directed graph on button click
 $(document).ready( function() {
   $("#refresh_btn").click(make_graph);
 });
@@ -53,10 +53,13 @@ var make_graph = function() {
       .attr("class", "link")
       .style("stroke-width", function(d) { return Math.sqrt(d.value); });
 
+  var font_size_px = $('#font_size').val();
+  console.log(font_size_px);
   var node = svg.selectAll(".node")
       .data(json_nodes)
     .enter().append("g")
       .attr("class", "node")
+      .style("font-size", font_size_px)
       .call(force.drag);
 
   var radius = $('#radius').val();
