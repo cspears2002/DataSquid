@@ -1,5 +1,7 @@
 <div class="container">
+
   <div class="form-signin">
+
     <div class="form_and_header">
       <h2 class="form-signin-heading">Please sign in</h2>
       <%= form_for @user, {url:"/authentications", method:"post"} do |u| %>
@@ -8,11 +10,18 @@
         <%= u.submit "Sign in", class: "btn btn-lg btn-primary btn-block" %>
       <% end %>
     </div>
+
+    <div id="little_squid">
+        <%= image_tag("icon_12656/icon_12656.svg", size: "200x200") %>
+    </div>
+    
   </div>
-  
-  <div id="little_squid">
-      <%= image_tag("icon_12656/icon_12656.svg", size: "200x200") %>
-  </div>
+
 </div>
 
-Designed by Cecilia Morales from the Noun Project
+<div class="container">
+  <div class="contribution">
+    Image created by Cecilia Morales from the Noun Project
+  <div>
+</div>
+
