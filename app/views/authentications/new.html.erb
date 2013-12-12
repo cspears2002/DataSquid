@@ -1,8 +1,9 @@
-<div class="container">
 
-  <div class="form-signin">
 
-    <div class="form_and_header">
+<div class="row">
+
+  <div class="span4">
+    <div class="form-signin">
       <h2 class="form-signin-heading">Please sign in</h2>
       <%= form_for @user, {url:"/authentications", method:"post"} do |u| %>
         <%= u.text_field :name, placeholder: 'Login', class: "form-control" %>
@@ -10,18 +11,19 @@
         <%= u.submit "Sign in", class: "btn btn-lg btn-primary btn-block" %>
       <% end %>
     </div>
-
-    <div id="little_squid">
-        <%= image_tag("icon_12656/icon_12656.svg", size: "200x200") %>
-    </div>
-    
   </div>
 
-</div>
+  <div class="span4">
+    <div id="little_squid">
+      <%= image_tag("icon_12656/icon_12656.svg") %>
+    </div>
+  </div>
 
-<div class="container">
-  <div class="contribution">
-    Image created by Cecilia Morales from the Noun Project
-  <div>
+  <div class="span4">
+    <div class="contribution">
+      Image created by Cecilia Morales from the Noun Project
+    </div>
+  </div>
+
 </div>
 
