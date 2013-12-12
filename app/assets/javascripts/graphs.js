@@ -1,8 +1,11 @@
-// Grab the user id from rails and load graphs#new
 var ready = function() {
+  // Grab the user id from rails and load graphs#new
   var user_id = $('.user_info').data('user-id');
   var route = ['/users', user_id, 'graphs', 'new'].join('/');
   $("#create_new_graph").load(route);
+
+  // Make graphs on page load
+  make_graph;
 };
 
 // Force a turbolinks page load
@@ -15,6 +18,7 @@ $(document).ready( function() {
 });
 
 var make_graph = function() {
+  alert('hello world');
 
   // Clear out the div first
   $("#display_graph svg:first").remove();
