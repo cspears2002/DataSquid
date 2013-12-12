@@ -20,6 +20,8 @@ $(document).ready( function() {
   });
 });
 
+var svg, node, link;
+
 function make_graph() {
 
   // Clear out the div first
@@ -33,7 +35,7 @@ function make_graph() {
   var color = d3.scale.category20();
 
   // Select the div and append a svg
-  var svg = d3.select("#display_graph").append("svg")
+  svg = d3.select("#display_graph").append("svg")
       .attr("width", width)
       .attr("height", height);
 
@@ -53,14 +55,14 @@ function make_graph() {
       .links(json_links)
       .start();
 
-  var link = svg.selectAll(".link")
+  link = svg.selectAll(".link")
       .data(json_links)
     .enter().append("line")
       .attr("class", "link")
       .style("stroke-width", function(d) { return Math.sqrt(d.value); });
 
   var font_size_px = $('#font_size').val();
-  var node = svg.selectAll(".node")
+  node = svg.selectAll(".node")
       .data(json_nodes)
     .enter().append("g")
       .attr("class", "node")
@@ -86,9 +88,17 @@ function make_graph() {
   });
 
   $('#fisheye_btn').click( function() {
-    $(this).css('color', 'orange');
-    make_fisheye();
+    var glyph_color = $(this).css('color');
+    // original color is white
+    orig_color = 'rgb(255, 255, 255)';
+    
+    if (glyph_color == orig_color) {
+      $(this).css('color', 'orange');
+    } else {
+      $(this).css('color', orig_color);
+    };
   });
+
 };
 
 function make_fisheye() {
@@ -97,16 +107,16 @@ function make_fisheye() {
     .distortion(2);
 
   svg.on("mousemove", function() {
-  fisheye.focus(d3.mouse(this));
+    fisheye.focus(d3.mouse(this));
 
-  node.each(function(d) { d.fisheye = fisheye(d); })
-      .attr("cx", function(d) { return d.fisheye.x; })
-      .attr("cy", function(d) { return d.fisheye.y; })
-      .attr("r", function(d) { return d.fisheye.z * 4.5; });
+    node.each(function(d) { d.fisheye = fisheye(d); })
+        .attr("cx", function(d) { return d.fisheye.x; })
+        .attr("cy", function(d) { return d.fisheye.y; })
+        .attr("r", function(d) { return d.fisheye.z * 4.5; });
 
-  link.attr("x1", function(d) { return d.source.fisheye.x; })
-      .attr("y1", function(d) { return d.source.fisheye.y; })
-      .attr("x2", function(d) { return d.target.fisheye.x; })
-      .attr("y2", function(d) { return d.target.fisheye.y; });
+    link.attr("x1", function(d) { return d.source.fisheye.x; })
+        .attr("y1", function(d) { return d.source.fisheye.y; })
+        .attr("x2", function(d) { return d.target.fisheye.x; })
+        .attr("y2", function(d) { return d.target.fisheye.y; });
   });
 }
