@@ -19,7 +19,8 @@ body {
 }
 
 .form-signin .form-control {
-  position: relative;
+  /*position: relative;*/
+  float: left;
   font-size: 16px;
   height: auto;
   padding: 10px;
@@ -42,4 +43,12 @@ body {
   margin-bottom: 10px;
   border-top-left-radius: 0;
   border-top-right-radius: 0;
+}
+
+.form_and_header {
+  float: left;
+}
+
+#little_squid {
+  float: left;
 }
