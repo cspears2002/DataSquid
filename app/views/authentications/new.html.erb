@@ -1,7 +1,12 @@
 <div class="container">
 
   <div class="row">
+    <div class="col-md-10 col-md-offset-1">
+      <h1>Welcome to DataSquid</div>
+    </div>
+  </div>
 
+  <div class="row">
     <div class="col-md-4 col-md-offset-2">
       <h2>Please sign in</h2>
       <%= form_for @user, {url:"/authentications", method:"post"} do |u| %>
@@ -14,12 +19,13 @@
     <div class="col-md-6">
       <%= image_tag("icon_12656/icon_12656.svg", size: "200x200") %>
     </div>
-
   </div>
 
 
-  <div>
-      Image created by Cecilia Morales from the Noun Project
+  <div class="row">
+    <div class="col-md-3 col-md-offset-2">
+        Image created by Cecilia Morales from the Noun Project
+    </div>
   </div>
 
 </div>
