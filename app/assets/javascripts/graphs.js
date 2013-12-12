@@ -1,5 +1,4 @@
-
-
+// Get these up and running on page load
 var ready = function() {
   // Grab the user id from rails and load graphs#new
   var user_id = $('.user_info').data('user-id');
@@ -8,7 +7,6 @@ var ready = function() {
 
   // Make graphs on page load
   make_graph();
-  
 };
 
 // Force a turbolinks page load
@@ -86,4 +84,29 @@ function make_graph() {
         .attr("y2", function(d) { return d.target.y; });
     node.attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; });
   });
+
+  $('#fisheye_btn').click( function() {
+    $(this).css('color', 'orange');
+    make_fisheye();
+  });
 };
+
+function make_fisheye() {
+  var fisheye = d3.fisheye.circular()
+    .radius(200)
+    .distortion(2);
+
+  svg.on("mousemove", function() {
+  fisheye.focus(d3.mouse(this));
+
+  node.each(function(d) { d.fisheye = fisheye(d); })
+      .attr("cx", function(d) { return d.fisheye.x; })
+      .attr("cy", function(d) { return d.fisheye.y; })
+      .attr("r", function(d) { return d.fisheye.z * 4.5; });
+
+  link.attr("x1", function(d) { return d.source.fisheye.x; })
+      .attr("y1", function(d) { return d.source.fisheye.y; })
+      .attr("x2", function(d) { return d.target.fisheye.x; })
+      .attr("y2", function(d) { return d.target.fisheye.y; });
+  });
+}
