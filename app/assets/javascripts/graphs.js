@@ -1,3 +1,5 @@
+
+
 var ready = function() {
   // Grab the user id from rails and load graphs#new
   var user_id = $('.user_info').data('user-id');
@@ -5,7 +7,8 @@ var ready = function() {
   $("#create_new_graph").load(route);
 
   // Make graphs on page load
-  make_graph;
+  make_graph();
+  
 };
 
 // Force a turbolinks page load
@@ -14,11 +17,12 @@ $(document).on('page:load', ready);
 
 // Make force directed graph on button click
 $(document).ready( function() {
-  $("#refresh_btn").click(make_graph);
+  $("#refresh_btn").click( function() {
+    make_graph();
+  });
 });
 
-var make_graph = function() {
-  alert('hello world');
+function make_graph() {
 
   // Clear out the div first
   $("#display_graph svg:first").remove();
@@ -58,7 +62,6 @@ var make_graph = function() {
       .style("stroke-width", function(d) { return Math.sqrt(d.value); });
 
   var font_size_px = $('#font_size').val();
-  console.log(font_size_px);
   var node = svg.selectAll(".node")
       .data(json_nodes)
     .enter().append("g")
