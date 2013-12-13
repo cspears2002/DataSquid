@@ -17,17 +17,10 @@
     </div>
   </div>
 
-  <div class="row">
-    <div id="button_container">
-      <div class="col-md-12">
-        <div class="btn-group">
-          <%= button_to "View All Graphs", user_graphs_path(@user.id), method: :get,
-            class: "btn btn-lg btn-primary" %>
-          <%= button_to "Sign out", authentication_path(@user.id), method: :delete, 
-            class: "btn btn-lg btn-primary" %>
-        </div>
-      </div>
-    </div>
-  </div>
+  <%= button_to "View All Graphs", user_graphs_path(@user.id), method: :get,
+    class: "btn btn-primary float_left" %>
+
+  <%= button_to "Sign out", authentication_path(@user.id), method: :delete, 
+    class: "btn btn-primary float_left" %>
 
 </div>
