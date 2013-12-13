@@ -20,6 +20,24 @@ $(document).ready( function() {
   });
 });
 
+// Turn on and off fisheye distortion
+$(document).ready( function() {
+  $('#fisheye_btn').click( function() {
+    var glyph_color = $(this).css('color');
+    // original color is white
+    orig_color = 'rgb(255, 255, 255)';
+
+    if (glyph_color == orig_color) {
+      $(this).css('color', 'orange');
+      make_graph();
+      make_fisheye();
+    } else {
+      $(this).css('color', orig_color);
+      make_graph();
+    };
+  });
+});
+
 var svg, node, link;
 
 function make_graph() {
@@ -86,19 +104,6 @@ function make_graph() {
         .attr("y2", function(d) { return d.target.y; });
     node.attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; });
   });
-
-  $('#fisheye_btn').click( function() {
-    var glyph_color = $(this).css('color');
-    // original color is white
-    orig_color = 'rgb(255, 255, 255)';
-    
-    if (glyph_color == orig_color) {
-      $(this).css('color', 'orange');
-    } else {
-      $(this).css('color', orig_color);
-    };
-  });
-
 };
 
 function make_fisheye() {
