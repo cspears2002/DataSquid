@@ -114,22 +114,16 @@ function make_fisheye() {
   svg.on("mousemove", function() {
     fisheye.focus(d3.mouse(this));
 
-    /*
     node.each(function(d) { d.fisheye = fisheye(d); })
-        .attr("cx", function(d) { return d.fisheye.x; })
-        .attr("cy", function(d) { return d.fisheye.y; })
-        .attr("r", function(d) { return d.fisheye.z * 4.5; });
-    */
-    var circles = node.selectAll("circle");
-    circles.each(function(d) { d.fisheye = fisheye(d); })
+      .selectAll("circle")
         .attr("cx", function(d) { return d.fisheye.x - d.x; })
         .attr("cy", function(d) { return d.fisheye.y - d.y; })
         .attr("r", function(d) { return d.fisheye.z * 4.5; });
 
-    var text = node.selectAll("text");
-    text.each(function(d) { d.fisheye = fisheye(d); })
+    node.each(function(d) { d.fisheye = fisheye(d); })
+      .selectAll("text")
         .attr("dx", function(d) { return d.fisheye.x - d.x; })
-        .attr("dy", function(d) { return d.fisheye.y - d.y; })
+        .attr("dy", function(d) { return d.fisheye.y - d.y; });
         
     link.attr("x1", function(d) { return d.source.fisheye.x; })
         .attr("y1", function(d) { return d.source.fisheye.y; })
