@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_filter :add_breadcrumbs
+  before_filter :add_breadcrumbs, :only => [:show]
 
   def new
     @user = User.new(name: params[:name])
