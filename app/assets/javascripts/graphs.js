@@ -21,6 +21,9 @@ var fisheye_on = false;
 // Make force directed graph on button click
 $(document).ready( function() {
   $("#refresh_btn").click( function() {
+    // Make sure fisheye is turned off
+    $('#fisheye_btn').css('color', 'white');
+    fisheye_on = false;
     make_graph();
   });
 });
