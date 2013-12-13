@@ -29,8 +29,8 @@ $(document).ready( function() {
 
     if (glyph_color == orig_color) {
       $(this).css('color', 'orange');
-      make_graph();
       make_fisheye();
+      make_graph();
     } else {
       $(this).css('color', orig_color);
       make_graph();
@@ -38,7 +38,7 @@ $(document).ready( function() {
   });
 });
 
-var svg, node, link;
+var svg, node, link fisheye_on;
 
 function make_graph() {
 
@@ -97,31 +97,29 @@ function make_graph() {
       .attr("dy", ".35em")
       .text(function(d) { return d.name; });
 
-  force.on("tick", function() {
-    link.attr("x1", function(d) { return d.source.x; })
-        .attr("y1", function(d) { return d.source.y; })
-        .attr("x2", function(d) { return d.target.x; })
-        .attr("y2", function(d) { return d.target.y; });
-    node.attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; });
-  });
-};
+  if (fisheye_on == false) {
 
-function make_fisheye() {
-  var fisheye = d3.fisheye.circular()
-    .radius(200)
-    .distortion(2);
+    force.on("tick", function() {
+      link.attr("x1", function(d) { return d.source.x; })
+          .attr("y1", function(d) { return d.source.y; })
+          .attr("x2", function(d) { return d.target.x; })
+          .attr("y2", function(d) { return d.target.y; });
+      node.attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; });
+    });
 
-  svg.on("mousemove", function() {
+  } else {
+
+    svg.on("mousemove", function() {
     fisheye.focus(d3.mouse(this));
 
-    node.each(function(d) { d.fisheye = fisheye(d); })
-      .selectAll("circle")
+    node.each(function(d) { d.fisheye = fisheye(d); });
+
+    node.selectAll("circle")
         .attr("cx", function(d) { return d.fisheye.x - d.x; })
         .attr("cy", function(d) { return d.fisheye.y - d.y; })
         .attr("r", function(d) { return d.fisheye.z * 4.5; });
 
-    node.each(function(d) { d.fisheye = fisheye(d); })
-      .selectAll("text")
+    node.selectAll("text")
         .attr("dx", function(d) { return d.fisheye.x - d.x; })
         .attr("dy", function(d) { return d.fisheye.y - d.y; });
         
@@ -129,5 +127,14 @@ function make_fisheye() {
         .attr("y1", function(d) { return d.source.fisheye.y; })
         .attr("x2", function(d) { return d.target.fisheye.x; })
         .attr("y2", function(d) { return d.target.fisheye.y; });
-  });
-}
+    });
+  };
+};
+
+function make_fisheye() {
+  var fisheye = d3.fisheye.circular()
+    .radius(200)
+    .distortion(2);
+
+  fisheye_on = true;
+};
