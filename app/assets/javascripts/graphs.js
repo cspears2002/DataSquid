@@ -13,6 +13,11 @@ var ready = function() {
 $(document).ready(ready);
 $(document).on('page:load', ready);
 
+
+// Global variables
+var svg, node, link; 
+var fisheye_on = false;
+
 // Make force directed graph on button click
 $(document).ready( function() {
   $("#refresh_btn").click( function() {
@@ -29,16 +34,16 @@ $(document).ready( function() {
 
     if (glyph_color == orig_color) {
       $(this).css('color', 'orange');
-      make_fisheye();
+      fisheye_on = true;
       make_graph();
     } else {
       $(this).css('color', orig_color);
+      fisheye_on = false;
       make_graph();
     };
   });
 });
 
-var svg, node, link fisheye_on;
 
 function make_graph() {
 
@@ -109,6 +114,10 @@ function make_graph() {
 
   } else {
 
+    var fisheye = d3.fisheye.circular()
+      .radius(200)
+      .distortion(2);
+
     svg.on("mousemove", function() {
     fisheye.focus(d3.mouse(this));
 
@@ -129,12 +138,4 @@ function make_graph() {
         .attr("y2", function(d) { return d.target.fisheye.y; });
     });
   };
-};
-
-function make_fisheye() {
-  var fisheye = d3.fisheye.circular()
-    .radius(200)
-    .distortion(2);
-
-  fisheye_on = true;
 };
