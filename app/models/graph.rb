@@ -6,7 +6,9 @@ class Graph < ActiveRecord::Base
   validates :name, presence: true
   validates :data, presence: true
 
-  def parse_file(path)
+  def parse_file(file_path)
+    path = Rails.root.join(file_path);
+
     # Check to see if the json file exists and is not empty
     if File.exist?(path) &&
        File.extname(path) == ".json" &&

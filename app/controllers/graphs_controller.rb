@@ -1,8 +1,6 @@
 class GraphsController < ApplicationController
   before_filter :add_breadcrumbs
 
-  # Rails.root.join("/public");
-
   def index
     @user = User.find(params[:user_id])
     @graphs = Graph.where(user_id: @user.id)
