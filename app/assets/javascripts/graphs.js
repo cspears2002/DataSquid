@@ -118,7 +118,7 @@ function make_graph() {
   } else {
 
     var fisheye = d3.fisheye.circular()
-      .radius(100)
+      .radius(120)
       .distortion(2);
 
     svg.on("mousemove", function() {
