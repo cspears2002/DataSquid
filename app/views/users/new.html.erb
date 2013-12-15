@@ -1,7 +1,25 @@
-<%= form_for @user do |u| %>
-  <%= u.text_field :name, placeholder: 'Login'%>
-  <%= u.password_field :password, placeholder: 'Password'%>
-  <%= u.password_field :password_confirmation, placeholder: 'Confirm Password'%>
 
-  <%= u.submit "Sign in" %>
-<% end %>
+<div class ="container">
+
+  <div class="row">
+    <div class="col-md-12">
+      <h3>Create A New User</h3>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12">
+      <div class="form-group">
+        <%= form_for @user do |u| %>
+          <%= u.text_field :name, placeholder: 'Login', class: "form-inline" %>
+          <%= u.password_field :password, placeholder: 'Password', class: "form-inline" %>
+          <%= u.password_field :password_confirmation, placeholder: 'Confirm Password', 
+            class: "form-inline"%>
+
+          <%= u.submit "Sign in", class: "btn btn-md btn-primary form-inline" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+</div>
