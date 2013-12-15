@@ -12,9 +12,15 @@
 <%= render_breadcrumbs %>
 
 <!-- Show flash messages -->
-<% flash.each do |name, msg| -%>
-  <%= content_tag :div, msg, class: name %>
-<% end -%>
+<div class="container">
+  <div class="row">
+    <div class="col-md-4">
+      <% flash.each do |name, msg| -%>
+        <%= content_tag :div, msg, class: name %>
+      <% end -%>
+    </div>
+  </div>
+</div>
 
 <%= yield %>
 
