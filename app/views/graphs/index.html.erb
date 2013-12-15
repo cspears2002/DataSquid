@@ -1,22 +1,36 @@
-<h1> Graphs Belonging to <%= @user.name %> </h1>
+<div class="container">
 
-<table>
-  <tr>
-    <th>ID</th>
-    <th>Name</th>
-    <th>Update At</th>
-  </tr
-  <% @graphs.each do |g| %>
-  <tr>
-    <td><%= g.id %></td>
-    <td><%= g.name %></td>
-    <td><%= g.updated_at %></td>
-    <td><%= button_to "View", user_graph_path(id: g.id), method: :get %></td>
-    <td><%= button_to "Delete", user_graph_path(@user.id, id: g.id), method: :delete %></td>
-  </tr>
-  <% end %>
-</table>
+  <div class="row">
+    <div class="col-md-6">
+      <h1> Graphs Belonging to <%= @user.name %> </h1>
+    </div>
+  </div>
 
+  <div class="row">
+    <div class="col-md-6">
+      <table class="table-condensed">
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Update At</th>
+        </tr
+        <% @graphs.each do |g| %>
+        <tr>
+          <td><%= g.id %></td>
+          <td><%= g.name %></td>
+          <td><%= g.updated_at %></td>
+          <td><%= button_to "View", user_graph_path(id: g.id), method: :get, 
+            class: "btn btn-md btn-primary" %></td>
+          <td><%= button_to "Delete", user_graph_path(@user.id, id: g.id), method: :delete,
+            class: "btn btn-md btn-primary" %></td>
+        </tr>
+        <% end %>
+      </table>
+    </div>
+  </div>
+
+<!--
 <br>
 <%= button_to "User Home", user_path(@user.id), method: :get %>
-
+-->
+</div>
