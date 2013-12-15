@@ -85,7 +85,7 @@ function make_graph() {
       .data(json_links)
     .enter().append("line")
       .attr("class", "link")
-      .style("stroke-width", function(d) { return Math.sqrt(d.value); });
+      .style("stroke-width", function(d) { return Math.sqrt(d.value) + 0.5; });
 
   var font_size_px = $('#font_size').val();
   node = svg.selectAll(".node")
@@ -118,7 +118,7 @@ function make_graph() {
   } else {
 
     var fisheye = d3.fisheye.circular()
-      .radius(200)
+      .radius(100)
       .distortion(2);
 
     svg.on("mousemove", function() {

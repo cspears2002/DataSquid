@@ -39,7 +39,11 @@ body {
   width: 70px;
 }
 
-/* Fore Directed Graph */
+/* Force Directed Graph */
+
+.node {
+  stroke-width: 1.5px;
+}
 
 .node text {
   pointer-events: none;
