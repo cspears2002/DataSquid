@@ -34,11 +34,18 @@ class GraphsController < ApplicationController
   end
 
   def edit
+    # @user = User.find(params[:user_id])
     @graph = Graph.find(params[:id])
     render :edit, layout: false
   end
 
   def update
+    @graph = Graph.find(params[:id])
+    if @graph.update(graph_params)
+      redirect_to :action => "show", :id => @graph.id, :user_id => current_user.id
+    else
+      render 'edit'
+    end
   end
 
   def destroy

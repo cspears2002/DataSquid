@@ -1,11 +1,11 @@
-  <%= form_for [@user, @graph], {url: user_graphs_url} do |form| %>
-    <div class="col-md-3">
-      <%= form.text_field :name, placeholder: 'Graph Name', class: "form-control"%>
-    </div>
-    <div class="col-md-4">
-      <%= form.text_field :data, placeholder: 'File Path', class: "form-control" %>
-    </div>
-    <div class="col-md-2">
-      <%= form.submit "Create Graph", class: "btn btn-md btn-primary" %>
-    </div>
-  <% end %>
+<%= form_for [@user, @graph], {url: user_graphs_url} do |form| %>
+  <div class="col-md-3">
+    <%= form.text_field :name, placeholder: 'Graph Name', class: "form-control"%>
+  </div>
+  <div class="col-md-4">
+    <%= form.text_field :data, placeholder: 'File Path', class: "form-control" %>
+  </div>
+  <div class="col-md-2">
+    <%= form.submit "Create Graph", class: "btn btn-md btn-primary" %>
+  </div>
+<% end %>

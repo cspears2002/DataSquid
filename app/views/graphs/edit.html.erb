@@ -1,1 +1,12 @@
-<h1>Blah!</h1>
+<% @graph.graph_json["links"].each do |g| %>
+  <table class="table table-bordered">
+    <th>
+      <%= g["source"] %>
+    </th>
+    <tr>
+      <th>
+        <%= g["target"] %>
+      </th>
+    </tr>
+  </table>
+<% end %>
