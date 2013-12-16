@@ -17,8 +17,8 @@
 
     <div class="col-md-3">
       <% flash.each do |name, msg| -%>
-        <%= image_tag("icon_12544/icon_12544.svg", size: "50x50") %>
-        <%= content_tag :div, msg, class: name %>
+        <%= image_tag("icon_12544/icon_12544.svg", size: "25x25", style: "float: left;") %>
+        <%= content_tag :div, msg, class: name, style: "float: left;" %>
       <% end -%>
     </div>
 
