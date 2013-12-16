@@ -6,18 +6,11 @@ class Graph < ActiveRecord::Base
   validates :name, presence: true
   validates :data, presence: true
 
-  def make_uniq_links(file_path, key)
+  def set_graph_size(file_path)
     parsed_json = self.parse_file(file_path)
-    links = parsed_json["links"]
+    nodes = parsed_json["nodes"]
 
-    just_source = Array.new
-    links.each do |link|
-      just_source.push(link[key])
-    end
-    
-    uniq_links = just_source.uniq.sort
-
-    uniq_links
+    nodes
   end
 
   def parse_file(file_path)

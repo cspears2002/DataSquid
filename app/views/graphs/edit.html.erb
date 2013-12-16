@@ -3,17 +3,17 @@
    <!-- Source -->
   <tr>
     <th> </th>
-  <% @graph.make_uniq_links(@graph.data, "source").each do |src| %>
-    <th><%= src %></th>
+  <% @graph.set_graph_size(@graph.data).each do |src| %>
+    <th><%= src["name"] %></th>
   <% end %>
   </tr>
 
   <!-- Target -->
-  <% @graph.make_uniq_links(@graph.data, "source").each do |target| %>
+  <% @graph.set_graph_size(@graph.data).each do |target| %>
     <tr>
-      <th><%= target %></th>
-      <% @graph.make_uniq_links(@graph.data, "source").each do |button| %>
-        <td><%= check_box_tag(:linked, "linked") %></td>
+      <th><%= target["name"] %></th>
+      <% @graph.set_graph_size(@graph.data).each do |button| %>
+        <td><input type="checkbox" checked="true"></td>
       <% end %>
     </tr>
   <% end %>
