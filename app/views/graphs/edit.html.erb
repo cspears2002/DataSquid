@@ -8,6 +8,9 @@
   <% @graph.make_uniq_links(@graph.data, "target").each do |target| %>
     <tr>
       <th><%= target %></th>
+      <% @graph.make_uniq_links(@graph.data, "target").each do |button| %>
+        <td><%= check_box_tag(:linked, "linked") %></td>
+      <% end %>
     </tr>
   <% end %>
 </table>
