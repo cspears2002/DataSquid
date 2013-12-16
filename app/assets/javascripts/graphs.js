@@ -1,10 +1,13 @@
 // Get these up and running on page load
 var ready = function() {
-  // Grab the user id from rails and load graphs#new
+  // Grab the user id from rails and load graphs#new and graphs#edit
   var user_id = $('.user_info').data('user-id');
-  var route = ['/users', user_id, 'graphs', 'new'].join('/');
-  $("#create_new_graph").load(route);
-
+  console.log(user_id);
+  var graph_id = $('.graph_info').data('graph-id');
+  var new_route = ['/users', user_id, 'graphs', 'new'].join('/');
+  var edit_route = ['/users', user_id, 'graphs', graph_id, 'edit'].join('/');
+  $("#create_new_graph").load(new_route);
+  $("#edit_graph").load(edit_route);
   // Make graphs on page load
   make_graph();
 };

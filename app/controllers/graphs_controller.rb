@@ -33,6 +33,14 @@ class GraphsController < ApplicationController
     add_breadcrumb "Views", user_graph_path(@user.id, @graph.id)
   end
 
+  def edit
+    @graph = Graph.find(params[:id])
+    render :edit, layout: false
+  end
+
+  def update
+  end
+
   def destroy
     Graph.find(params[:id]).destroy
     redirect_to user_graphs_url

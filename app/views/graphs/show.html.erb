@@ -2,6 +2,14 @@
 <%= content_tag :div, class: "graph_json", data: {json: @graph.graph_json} do %>
 <% end %>
 
+<!-- Pass graph id to Javascript -->
+<%= content_tag :div, class: "graph_info", data: {graph_id: @graph.id} do %>
+<% end %>
+
+<!-- Pass user to Javascript -->
+<%= content_tag :div, class: "user_info", data: {user_id: @user.id} do %>
+<% end %>
+
 <div class="container">
 
   <h1>
@@ -54,9 +62,10 @@
     </div>
   </div>
 
+  <!-- Bring in edit view -->
   <div id="relationships" class="graph_control_panel">
-    <h3>Display Relationships</h3>
-    <button type="button" class="btn btn-primary btn-block">Nodes</button>
-    <button type="button" class="btn btn-primary btn-block">Links</button>
+    <div id="edit_graph">
+    </div>
   </div>
+
 </div>
