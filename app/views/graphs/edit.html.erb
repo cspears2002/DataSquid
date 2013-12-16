@@ -1,14 +1,18 @@
+<!-- Basing size of graph off of source -->
 <table class="table table-bordered">
+   <!-- Source -->
   <tr>
     <th> </th>
   <% @graph.make_uniq_links(@graph.data, "source").each do |src| %>
     <th><%= src %></th>
   <% end %>
   </tr>
-  <% @graph.make_uniq_links(@graph.data, "target").each do |target| %>
+
+  <!-- Target -->
+  <% @graph.make_uniq_links(@graph.data, "source").each do |target| %>
     <tr>
       <th><%= target %></th>
-      <% @graph.make_uniq_links(@graph.data, "target").each do |button| %>
+      <% @graph.make_uniq_links(@graph.data, "source").each do |button| %>
         <td><%= check_box_tag(:linked, "linked") %></td>
       <% end %>
     </tr>
