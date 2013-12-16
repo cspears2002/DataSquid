@@ -16,6 +16,7 @@ class Graph < ActiveRecord::Base
     end
     
     uniq_links = just_source.uniq.sort
+
     uniq_links
   end
 
