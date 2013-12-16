@@ -1,7 +1,12 @@
 <table class="table table-bordered">
   <tr>
-  <% @graph.graph_json["links"].each do |g| %>
-    <th><%= g["source"] %></th>
+  <% @graph.make_uniq_links(@graph.data, "source").each do |src| %>
+    <th><%= src %></th>
   <% end %>
   </tr>
+  <% @graph.make_uniq_links(@graph.data, "target").each do |target| %>
+    <tr>
+      <th><%= target %></th>
+    </tr>
+  <% end %>
 </table>
