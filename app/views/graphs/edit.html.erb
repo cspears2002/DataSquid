@@ -12,7 +12,14 @@
   <% @graph.set_graph_size(@graph.data).each do |target| %>
     <tr>
       <th><%= target["name"] %></th>
-      <!--
+      <% @graph.set_graph_size(@graph.data).each do |button| %>
+        <td><input type="checkbox"></td>
+      <% end %>
+    </tr>
+  <% end %>
+</table>
+
+<!--
       <% # @graph.set_graph_size(@graph.data).each do |button| %>
         <% # checked = @graph.is_checked(@graph.data, button["name"], target["name"]) %>
         <% # if checked == true %>
@@ -22,6 +29,3 @@
         <% # end %>
       <% # end %>
     -->
-    </tr>
-  <% end %>
-</table>
