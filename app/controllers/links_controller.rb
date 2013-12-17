@@ -1,7 +1,11 @@
 class LinksController < ApplicationController
 
-  def new(src_node, target_node, value)
-    @link = Link.new(src_node, target_node, value)
+  def new(link_hash)
+    source = link_hash["source"]
+    target = link_hash["target"]
+    value = link_hash["value"]
+    checked = true
+    @link = Link.new(source, target, value, checked)
     render :new, layout: false
   end
 

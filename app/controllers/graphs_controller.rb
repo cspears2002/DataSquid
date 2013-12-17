@@ -38,11 +38,7 @@ class GraphsController < ApplicationController
 
       #Make links
       links.each do |link|
-        src_index = link["source"]
-        target_index = link["target"]
-        @link = Links.new(nodes_array[src_index],
-                          nodes_array[target_index],
-                          link["value"])
+        @link = Links.new(link)
         @link.save
         puts @link
       end
