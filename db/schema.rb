@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131217020931) do
+ActiveRecord::Schema.define(version: 20131217193356) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,7 +32,10 @@ ActiveRecord::Schema.define(version: 20131217020931) do
     t.boolean  "checked"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "graph_id"
   end
+
+  add_index "links", ["graph_id"], name: "index_links_on_graph_id", using: :btree
 
   create_table "nodes", force: true do |t|
     t.string   "name"
@@ -40,6 +43,7 @@ ActiveRecord::Schema.define(version: 20131217020931) do
     t.integer  "link_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "file_path"
   end
 
   add_index "nodes", ["link_id"], name: "index_nodes_on_link_id", using: :btree

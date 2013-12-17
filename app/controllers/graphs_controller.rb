@@ -1,3 +1,6 @@
+require 'nodes.rb'
+require 'links.rb'
+
 class GraphsController < ApplicationController
   before_filter :add_breadcrumbs
 
@@ -20,6 +23,30 @@ class GraphsController < ApplicationController
 
     if @graph.graph_json
       @graph.save
+
+      # Get links and nodes
+      links = @graph.graph_json["links"]
+      nodes = @graph.graph_json["nodes"]
+
+      # Make nodes
+      nodes_array = Array.new
+      nodes.each do |node|
+        @node = Nodes.new(node)
+        @node.save
+        nodes_array.push(@node)
+      end
+
+      #Make links
+      links.each do |link|
+        src_index = link["source"]
+        target_index = link["target"]
+        @link = Links.new(nodes_array[src_index],
+                          nodes_array[target_index],
+                          link["value"])
+        @link.save
+        puts @link
+      end
+
       redirect_to :action => "show", :id => @graph.id, :user_id => current_user
     else
       flash[:alert] = "JSON is invalid."

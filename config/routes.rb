@@ -4,6 +4,8 @@ DataSquid::Application.routes.draw do
 
   resources :authentications
 
+  resources :nodes, :links
+
   resources :users do
     resources :graphs
   end
