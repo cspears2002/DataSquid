@@ -45,14 +45,14 @@ class GraphsController < ApplicationController
         links_array.push(@link)
       end
 
-      # Assign link ids to nodes
+      # Nodes have links
       links_array.each do |link|
         source_index = link["source"]
         target_index = link["target"]
         source_node = nodes_array[source_index]
         target_node = nodes_array[target_index]
-        source_node.update(link_id: link.id)
-        target_node.update(link_id: link.id)
+        link.update(source_node_id: source_node.id)
+        link.update(target_node_id: target_node.id)
       end
 
       redirect_to :action => "show", :id => @graph.id, :user_id => current_user

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131218182709) do
+ActiveRecord::Schema.define(version: 20131218185826) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,13 +29,14 @@ ActiveRecord::Schema.define(version: 20131218182709) do
 
   create_table "links", force: true do |t|
     t.integer  "value"
-    t.boolean  "checked",    default: true
+    t.boolean  "checked",        default: true
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "graph_id"
     t.integer  "source"
     t.integer  "target"
-    t.integer  "node_id"
+    t.integer  "source_node_id"
+    t.integer  "target_node_id"
   end
 
   add_index "links", ["graph_id"], name: "index_links_on_graph_id", using: :btree
