@@ -1,4 +1,5 @@
 class Links < ActiveRecord::Base
-  has_many :nodes
+  has_one :source_node, class_name: 'Node'
+  has_one :target_node, class_name: 'Node'
 
 end
