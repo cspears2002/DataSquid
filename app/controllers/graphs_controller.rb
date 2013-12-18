@@ -69,7 +69,6 @@ class GraphsController < ApplicationController
   end
 
   def edit
-    # @user = User.find(params[:user_id])
     @graph = Graph.find(params[:id])
     render :edit, layout: false
   end

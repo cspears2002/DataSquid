@@ -36,7 +36,7 @@ class Graph < ActiveRecord::Base
   end
 
 
-  def compare_names(name_1, name_2)
+  def checked(name_1, name_2)
     # Get the links that belong to the graph
     links = Links.where(graph_id: self)
 

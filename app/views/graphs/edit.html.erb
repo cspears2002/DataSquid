@@ -13,13 +13,17 @@
     <tr>
       <th><%= target["name"] %></th>
       <% @graph.set_graph_size(@graph.data).each do |button| %>
-        <% checked = @graph.compare_names(button["name"], target["name"]) %>
+        <% checked = @graph.checked(button["name"], target["name"]) %>
+        <% src_name = button["name"] %>
+        <% target_name = target["name"] %>
+        <% names = src_name + ':' + target_name %>
         <% if checked %>
-          <td><input type="checkbox" checked="true"></td>
+          <td><%= check_box_tag 'linked', names, true %></td>
         <% else %>
-          <td><input type="checkbox"></td>
+          <td><%= check_box_tag 'linked', names, false %></td>
         <% end %>
       <% end %>
     </tr>
   <% end %>
 </table>
+<%= button_to "Rebuild Graph", class: "btn btn-primary btn-block" %>
