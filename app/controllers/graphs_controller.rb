@@ -36,11 +36,21 @@ class GraphsController < ApplicationController
         nodes_array.push(@node)
       end
 
-      #Make links
+      # Make links
+      links_array = Array.new
       links.each do |link|
         @link = Links.new(link)
+        @link.graph_id = @graph.id
         @link.save
-        puts @link
+        links_array.push(@link)
+      end
+
+      links_array.each do |link|
+        source_index = link["source"]
+        target_index = link["target"]
+        source_node = nodes_array[source_index]
+        target_node = nodes_array[target_index]
+        puts [source_node.name, source_index, target_node.name, target_index].join(' ')
       end
 
       redirect_to :action => "show", :id => @graph.id, :user_id => current_user
