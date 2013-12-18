@@ -13,7 +13,7 @@
     <tr>
       <th><%= target["name"] %></th>
       <% @graph.set_graph_size(@graph.data).each do |button| %>
-        <% checked = Link.compare_names(@graph, button["name"], target["name"]) %>
+        <% checked = @graph.compare_names(button["name"], target["name"]) %>
         <% if checked %>
           <td><input type="checkbox" checked="true"></td>
         <% else %>
