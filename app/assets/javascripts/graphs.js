@@ -24,18 +24,21 @@ var ready = function() {
     json_obj = jQuery.parseJSON(json_str);
     nodes = json_obj["nodes"];
     var nodes_array = []
+
+    // Put names in an array so we can use the indices
+    // when building the links.
     for (var i=0, len=nodes.length; i<len; i++) {
       var name = nodes[i]["name"];
       nodes_array.push(name);
     }
-    console.log(nodes_array);
 
+    // Build a link object.
     var links_obj = {"links":[]};
     for (var i=0, len=checked_val.length; i<len; i++) {
       var source = checked_val[i].split(':')[0];
       var target = checked_val[i].split(':')[1];
-      var source_index = nodes_array.indexof(source);
-      var target_index = nodes_array.indexof(target);
+      var source_index = nodes_array.indexOf(source);
+      var target_index = nodes_array.indexOf(target);
       var link = { "source" : source_index,
                    "target" : target_index,
                    "value"  : 1 };
