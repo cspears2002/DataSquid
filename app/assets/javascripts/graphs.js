@@ -18,6 +18,10 @@ $(document).ready(ready);
 $(document).on('page:load', ready);
 
 
+$(document).ready( function() {
+  $("#rebuild_btn").click( function() { console.log("clicked!"); });
+});
+
 // Global variables
 var svg, node, link; 
 var fisheye_on = false;
