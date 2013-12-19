@@ -13,7 +13,38 @@ var ready = function() {
   make_graph();
 
   // Rebuilds graph with data from the checkboxes
-  $("#rebuild_btn").click( function() { console.log("clicked!"); });
+  $("#rebuild_btn").click( function() {
+    // Get valus from checkboxes
+    checked_val = $( "input:checked" ).map(function () { 
+      return $(this).val(); 
+    });
+
+    // Pull json from web page as a string
+    json_str = $(".graph_json").attr("data-json");
+    json_obj = jQuery.parseJSON(json_str);
+    nodes = json_obj["nodes"];
+    var nodes_array = []
+    for (var i=0, len=nodes.length; i<len; i++) {
+      var name = nodes[i]["name"];
+      nodes_array.push(name);
+    }
+    console.log(nodes_array);
+
+    var links_obj = {"links":[]};
+    for (var i=0, len=checked_val.length; i<len; i++) {
+      var source = checked_val[i].split(':')[0];
+      var target = checked_val[i].split(':')[1];
+      var source_index = nodes_array.indexof(source);
+      var target_index = nodes_array.indexof(target);
+      var link = { "source" : source_index,
+                   "target" : target_index,
+                   "value"  : 1 };
+      links_obj["links"].push(link);
+    }
+
+    console.log(links_obj);
+    
+  });
 
   // Make force directed graph on button click
   $("#refresh_btn").click( function() {
