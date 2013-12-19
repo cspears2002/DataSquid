@@ -12,6 +12,8 @@
   <% @graph.set_graph_size(@graph.data).each do |target| %>
     <tr>
       <th><%= target["name"] %></th>
+      <!-- Make sure checkboxes that represent a node pair
+      belonging to a link are checked -->
       <% @graph.set_graph_size(@graph.data).each do |button| %>
         <% checked = @graph.checked(button["name"], target["name"]) %>
         <% src_name = button["name"] %>
@@ -26,4 +28,4 @@
     </tr>
   <% end %>
 </table>
-<%= button_to "Rebuild Graph", class: "btn btn-primary btn-block" %>
+<%= button_to "Rebuild Graph", user_graph_path, method: :patch, class: "btn btn-primary btn-block" %>
