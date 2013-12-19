@@ -28,3 +28,12 @@
     </tr>
   <% end %>
 </table>
+
+<%= form_for [@user, @graph], {url: user_graph_url} do |form| %>
+  <div class="col-md-3">
+    <%= form.text_field :graph_json, placeholder: 'New JSON', class: "form-control new_json" %>
+  </div>
+  <div class="col-md-2">
+    <%= form.submit "Update Graph", class: "btn btn-md btn-primary" %>
+  </div>
+<% end %>
