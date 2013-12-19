@@ -45,7 +45,10 @@ var ready = function() {
       links_obj["links"].push(link);
     }
 
-    console.log(links_obj);
+    new_json = {"nodes" : nodes,
+                "links" : links_obj["links"]};
+
+    console.log(new_json);
     
   });
 
