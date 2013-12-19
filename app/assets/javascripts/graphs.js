@@ -11,33 +11,19 @@ var ready = function() {
 
   // Make graphs on page load
   make_graph();
-};
 
-// Force a turbolinks page load
-$(document).ready(ready);
-$(document).on('page:load', ready);
-
-
-$(document).ready( function() {
+  // Rebuilds graph with data from the checkboxes
   $("#rebuild_btn").click( function() { console.log("clicked!"); });
-});
 
-// Global variables
-var svg, node, link; 
-var fisheye_on = false;
-
-// Make force directed graph on button click
-$(document).ready( function() {
+  // Make force directed graph on button click
   $("#refresh_btn").click( function() {
     // Make sure fisheye is turned off
     $('#fisheye_btn').css('color', 'white');
     fisheye_on = false;
     make_graph();
   });
-});
 
-// Turn on and off fisheye distortion
-$(document).ready( function() {
+  // Turn on and off fisheye distortion
   $('#fisheye_btn').click( function() {
     var glyph_color = $(this).css('color');
     // original color is white
@@ -53,8 +39,16 @@ $(document).ready( function() {
       make_graph();
     };
   });
-});
+};
 
+// Force a turbolinks page load
+$(document).ready(ready);
+$(document).on('page:load', ready);
+
+
+// Global variables
+var svg, node, link; 
+var fisheye_on = false;
 
 function make_graph() {
 
