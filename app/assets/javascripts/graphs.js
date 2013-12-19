@@ -48,14 +48,15 @@ var ready = function() {
     // Build new json
     new_json = {"nodes" : nodes,
                 "links" : links_obj["links"]};
+    console.log(new_json);
     var graph = ['/users', user_id, 'graphs', graph_id].join('/');
 
-    // Pass data to the model
-    $.ajax({
-      type: "PATCH",
-      url: graph, 
-      data: new_json
-    });
+    // // Pass data to the model
+    // $.ajax({
+    //   type: "PATCH",
+    //   url: graph, 
+    //   data: new_json
+    // });
   });
 
   // Make force directed graph on button click
