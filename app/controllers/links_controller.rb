@@ -12,6 +12,10 @@ class LinksController < ApplicationController
     @link = link.create( link_params )
   end
 
+  def destroy
+    Link.find(params[:id]).destroy
+  end
+
   private
 
   def link_params

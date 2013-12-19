@@ -75,7 +75,46 @@ class GraphsController < ApplicationController
 
   def update
     @graph = Graph.find(params[:id])
+
     if @graph.update(graph_params)
+
+      # Destroy old links
+      old_links = Links.where(graph_id: params[:id])
+      old_links.each do |link|
+        link.destroy
+      end
+
+      # Get new links and nodes from new json
+      links = @graph.graph_json["links"]
+      nodes = @graph.graph_json["nodes"]
+
+      # Make nodes
+      nodes_array = Array.new
+      nodes.each do |node|
+        @node = Nodes.new(node)
+        @node.save
+        nodes_array.push(@node)
+      end
+      
+      # Make new links
+      links_array = Array.new
+      links.each do |link|
+        @link = Links.new(link)
+        @link.graph_id = @graph.id
+        @link.save
+        links_array.push(@link)
+      end
+
+      # Set up new relationships
+      links_array.each do |link|
+        source_index = link["source"]
+        target_index = link["target"]
+        source_node = nodes_array[source_index]
+        target_node = nodes_array[target_index]
+        link.update(source_node_id: source_node.id)
+        link.update(target_node_id: target_node.id)
+      end
+
       redirect_to :action => "show", :id => @graph.id, :user_id => current_user.id
     else
       render 'edit'

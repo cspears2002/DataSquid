@@ -49,8 +49,8 @@ var ready = function() {
     node_link_obj = {"nodes" : nodes,
                      "links" : links_obj["links"]};
     new_json = JSON.stringify(node_link_obj)
-    //console.log(typeof(new_json));
-    var graph = ['/users', user_id, 'graphs', graph_id].join('/');
+    console.log(new_json);
+    //var graph = ['/users', user_id, 'graphs', graph_id].join('/');
 
     // Pass data to the model
     $(".new_json").val(new_json);
