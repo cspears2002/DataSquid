@@ -75,8 +75,6 @@ class GraphsController < ApplicationController
 
   def update
     @graph = Graph.find(params[:id])
-    # make new json
-    # update db with new json
     if @graph.update(graph_params)
       redirect_to :action => "show", :id => @graph.id, :user_id => current_user.id
     else

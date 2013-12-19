@@ -45,11 +45,16 @@ var ready = function() {
       links_obj["links"].push(link);
     }
 
+    // Build new json
     new_json = {"nodes" : nodes,
                 "links" : links_obj["links"]};
+    var graph = ['/users', user_id, 'graphs', graph_id].join('/');
 
-    console.log(new_json);
-    
+    $.ajax({
+      type: "PATCH",
+      url: graph, 
+      data: new_json
+    });
   });
 
   // Make force directed graph on button click
