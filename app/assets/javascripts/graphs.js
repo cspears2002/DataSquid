@@ -50,6 +50,7 @@ var ready = function() {
                 "links" : links_obj["links"]};
     var graph = ['/users', user_id, 'graphs', graph_id].join('/');
 
+    // Pass data to the model
     $.ajax({
       type: "PATCH",
       url: graph, 
