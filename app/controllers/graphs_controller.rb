@@ -78,8 +78,22 @@ class GraphsController < ApplicationController
 
     if @graph.update(graph_params)
 
-      # Destroy old links
+      # Destroy old links and nodes
       old_links = Links.where(graph_id: params[:id])
+      old_nodes_ids = Array.new
+      old_links.each do |link|
+        src_node_id = link.source_node_id
+        old_nodes_ids.push(src_node_id)
+        target_node_id = link.target_node_id
+        old_nodes_ids.push(target_node_id)
+      end
+
+      old_nodes_ids = old_nodes_ids.uniq
+      old_nodes_ids.each do |id|
+        # node = Nodes.where(id: id)
+        Nodes.destroy(id)
+      end
+
       old_links.each do |link|
         link.destroy
       end
@@ -88,7 +102,7 @@ class GraphsController < ApplicationController
       links = @graph.graph_json["links"]
       nodes = @graph.graph_json["nodes"]
 
-      # Make nodes
+      # Make new nodes
       nodes_array = Array.new
       nodes.each do |node|
         @node = Nodes.new(node)

@@ -11,6 +11,10 @@ class NodesController < ApplicationController
     @node = node.create( node_params )
   end
 
+  def destroy
+    Node.find(params[:id]).destroy
+  end
+
   private
 
   def node_params
