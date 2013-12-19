@@ -14,11 +14,12 @@
 <!-- Show flash messages -->
 <div class="container">
   <div class="row">
-
-    <div class="col-md-8">
+    
       <% flash.each do |name, msg| -%>
-        <%= image_tag("icon_12544/icon_12544.svg", size: "25x25", style: "float: left;") %>
-        <%= content_tag :div, msg, class: name, style: "float: left;" %>
+        <div class="col-md-4">
+          <%= image_tag("icon_12544/icon_12544.svg", size: "50x50", style: "float: left") %>
+          <%= content_tag :div, msg, class: name %>
+        </div>
       <% end -%>
     </div>
 
