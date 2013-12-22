@@ -54,6 +54,9 @@ var ready = function() {
 
     // Pass data to the model
     $(".new_json").val(new_json);
+
+    // Click submit button with jQuery
+    $('.update_graph').click();
   });
 
   // Make force directed graph on button click
